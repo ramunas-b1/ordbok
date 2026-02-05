@@ -22,7 +22,7 @@ summary{font-weight:bold;font-size:18px;cursor:pointer}
 <div id="list"></div>
 
 <script>
-fetch('https://raw.githubusercontent.com/ramunas-b1/ordbok/bot-data/words.json')
+fetch('words.json')
 .then(r=>r.json())
 .then(data=>{
   window.DATA=data;
