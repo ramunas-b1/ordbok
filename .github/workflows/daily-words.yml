@@ -12,6 +12,60 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update words.json
+  run: |
+    python3 << 'EOF'
+    import json
+
+    # last eksisterende ordbok
+    with open("words.json", "r", encoding="utf-8") as f:
+        dictionary = json.load(f)
+
+    # last ordlister
+    with open("wordlists.json", "r", encoding="utf-8") as f:
+        wl = json.load(f)
+
+    new_words = []
+
+    # 5 B1
+    for i in range(5):
+        w = wl["b1_words"][wl["b1_index"] % len(wl["b1_words"])]
+        new_words.append({
+            "no": w["no"],
+            "lt": w["lt"],
+            "examples": [
+                f"Ordet {w['no']} brukes ofte i hverdagen.",
+                f"Jeg møter {w['no']} på jobb.",
+                f"{w['no']} er vanlig i dagligtale.",
+                f"God bruk av {w['no']} er viktig i samfunnet.",
+                f"Forståelse av {w['no']} hjelper kommunikasjonen."
+            ]
+        })
+        wl["b1_index"] += 1
+
+    # 5 B2
+    for i in range(5):
+        w = wl["b2_words"][wl["b2_index"] % len(wl["b2_words"])]
+        new_words.append({
+            "no": w["no"],
+            "lt": w["lt"],
+            "examples": [
+                f"{w['no']} brukes ofte i formelle sammenhenger.",
+                f"Ordet {w['no']} viser høyere språknivå.",
+                f"God forståelse av {w['no']} er nyttig på jobb.",
+                f"{w['no']} er relevant i samfunn og arbeid.",
+                f"Dette ordet er typisk for B2-nivå."
+            ]
+        })
+        wl["b2_index"] += 1
+
+    dictionary.extend(new_words)
+
+    with open("words.json", "w", encoding="utf-8") as f:
+        json.dump(dictionary, f, ensure_ascii=False, indent=2)
+
+    with open("wordlists.json", "w", encoding="utf-8") as f:
+        json.dump(wl, f, ensure_ascii=False, indent=2)
+    EOF- name: Update words.json
         run: |
           python3 << 'EOF'
           import json, datetime
