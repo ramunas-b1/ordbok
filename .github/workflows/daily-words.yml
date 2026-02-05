@@ -2,97 +2,66 @@ name: Daily Dictionary Update
 
 on:
   schedule:
-    - cron: '0 6 * * *'   # hver dag kl 06:00 UTC
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
-# Viktig: bare én kjøring om gangen
 concurrency:
   group: daily-words
   cancel-in-progress: true
 
-# GitHub Actions må få lov til å skrive til repoet
 permissions:
   contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
 
       - name: Update words.json
         run: |
           python3 << 'EOF'
-          import json
+          import json, datetime
 
           # last ordbok
           try:
               with open("words.json", "r", encoding="utf-8") as f:
-                  dictionary = json.load(f)
+                  words = json.load(f)
           except:
-              dictionary = []
+              words = []
 
-          # last ordlister
-          with open("wordlists.json", "r", encoding="utf-8") as f:
-              wl = json.load(f)
+          today = datetime.date.today().isoformat()
 
-          new_words = []
-
-          # 5 B1-ord
-          for i in range(5):
-              w = wl["b1_words"][wl["b1_index"] % len(wl["b1_words"])]
-              new_words.append({
-                  "no": w["no"],
-                  "lt": w["lt"],
-                  "examples": [
-                      f"Ordet {w['no']} brukes ofte i hverdagen.",
-                      f"Jeg møter {w['no']} på jobb.",
-                      f"{w['no']} er vanlig i dagligtale.",
-                      f"God bruk av {w['no']} er viktig i samfunnet.",
-                      f"Forståelse av {w['no']} hjelper kommunikasjonen."
-                  ]
-              })
-              wl["b1_index"] += 1
-
-          # 5 B2-ord
-          for i in range(5):
-              w = wl["b2_words"][wl["b2_index"] % len(wl["b2_words"])]
-              new_words.append({
-                  "no": w["no"],
-                  "lt": w["lt"],
-                  "examples": [
-                      f"{w['no']} brukes ofte i formelle sammenhenger.",
-                      f"Ordet {w['no']} viser høyere språknivå.",
-                      f"God forståelse av {w['no']} er nyttig på jobb.",
-                      f"{w['no']} er relevant i samfunn og arbeid.",
-                      f"Dette ordet er typisk for B2-nivå."
-                  ]
-              })
-              wl["b2_index"] += 1
-
-          dictionary.extend(new_words)
+          # første versjon: legg til 1 nytt ord (enkelt test)
+          words.append({
+            "no": f"daglig_ord_{today}",
+            "lt": "automatiškai",
+            "examples": [
+              "Dette ordet ble lagt til automatisk.",
+              "Systemet fungerer uten manuelt arbeid.",
+              "Dette er et eksempel på automatisk oppdatering.",
+              "Automatisering sparer tid i hverdagen.",
+              "Dette ordet er lagt til av GitHub."
+            ]
+          })
 
           with open("words.json", "w", encoding="utf-8") as f:
-              json.dump(dictionary, f, ensure_ascii=False, indent=2)
-
-          with open("wordlists.json", "w", encoding="utf-8") as f:
-              json.dump(wl, f, ensure_ascii=False, indent=2)
+              json.dump(words, f, ensure_ascii=False, indent=2)
           EOF
 
-      - name: Commit and push changes
+      - name: Commit and push (main) with retry
         run: |
-         git config user.name "github-actions"
-         git config user.email "actions@github.com"
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
 
-         git checkout -B bot-data
+          git add words.json
+          git commit -m "Automatisk: nytt daglig ord" || echo "No changes to commit"
 
-         git add words.json wordlists.json
-         git commit -m "Automatisk: daglige ord" || echo "No changes to commit"
-
-         git push origin bot-data --force
-    
+          # retry 5 ganger hvis GitHub rakk først
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main || true
+            git push origin HEAD:main && break
+            sleep 2
+          done
