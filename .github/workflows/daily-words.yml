@@ -86,13 +86,10 @@ jobs:
 
       - name: Commit and push changes
         run: |
-        git config user.name "github-actions"
+    git config user.name "github-actions"
     git config user.email "actions@github.com"
 
-    git fetch origin
-    git rebase origin/main
-
     git add words.json wordlists.json
-    git commit -m "Automatisk: 5 B1 + 5 B2 ord" || echo "No changes to commit"
+    git commit -m "Automatisk: daglige ord" || echo "No changes to commit"
 
-    git push origin HEAD:main
+    git push --force-with-lease origin main
