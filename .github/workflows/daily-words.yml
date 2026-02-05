@@ -1,57 +1,93 @@
-import json
+name: Daily Dictionary Update
 
-# last ordbok
-try:
-    with open("words.json", "r", encoding="utf-8") as f:
-        words = json.load(f)
-except:
-    words = []
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
-# last ordlister
-with open("wordlists.json", "r", encoding="utf-8") as f:
-    wl = json.load(f)
+permissions:
+  contents: write
 
-def b1_examples(word):
-    return [
-        f"Jeg bruker ordet {word} i hverdagen.",
-        f"{word.capitalize()} er viktig når jeg snakker norsk.",
-        f"Jeg prøver å forstå hva {word} betyr.",
-        f"Dette er et vanlig ord på jobb.",
-        f"Jeg hører ofte ordet {word}."
-    ]
+concurrency:
+  group: daily-words
+  cancel-in-progress: true
 
-def b2_examples(word):
-    return [
-        f"God forståelse av {word} er viktig i profesjonell kommunikasjon.",
-        f"Ordet {word} brukes ofte i formelle og skriftlige sammenhenger.",
-        f"{word.capitalize()} kan forklare hvordan mennesker samhandler.",
-        f"På arbeidsplassen forventes det at man behersker begrepet {word}.",
-        f"Bruken av {word} viser et høyere språklig nivå."
-    ]
+jobs:
+  update:
+    runs-on: ubuntu-latest
 
-# 5 B1
-for _ in range(5):
-    w = wl["b1_words"][wl["b1_index"] % len(wl["b1_words"])]
-    wl["b1_index"] += 1
-    words.append({
-        "no": w["no"],
-        "lt": w["lt"],
-        "examples": b1_examples(w["no"])
-    })
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-# 5 B2
-for _ in range(5):
-    w = wl["b2_words"][wl["b2_index"] % len(wl["b2_words"])]
-    wl["b2_index"] += 1
-    words.append({
-        "no": w["no"],
-        "lt": w["lt"],
-        "examples": b2_examples(w["no"])
-    })
+      - name: Update words.json
+        run: |
+          python3 << 'EOF'
+          import json
 
-# lagre
-with open("words.json", "w", encoding="utf-8") as f:
-    json.dump(words, f, ensure_ascii=False, indent=2)
+          # last ordbok
+          try:
+              with open("words.json", "r", encoding="utf-8") as f:
+                  words = json.load(f)
+          except:
+              words = []
 
-with open("wordlists.json", "w", encoding="utf-8") as f:
-    json.dump(wl, f, ensure_ascii=False, indent=2)
+          # last ordlister
+          with open("wordlists.json", "r", encoding="utf-8") as f:
+              wl = json.load(f)
+
+          def b1_examples(word):
+              return [
+                  f"Jeg bruker ordet {word} i hverdagen.",
+                  f"{word.capitalize()} er et vanlig ord på jobb.",
+                  f"Jeg prøver å lære hva {word} betyr.",
+                  f"Jeg hører ofte ordet {word}.",
+                  f"{word.capitalize()} er nyttig i dagligtale."
+              ]
+
+          def b2_examples(word):
+              return [
+                  f"God forståelse av {word} er viktig i profesjonell kommunikasjon.",
+                  f"Ordet {word} brukes ofte i formelle sammenhenger.",
+                  f"{word.capitalize()} spiller en viktig rolle i arbeidslivet.",
+                  f"Bruken av {word} viser et høyere språknivå.",
+                  f"{word.capitalize()} er relevant i samfunnsrelaterte temaer."
+              ]
+
+          # 5 B1
+          for _ in range(5):
+              w = wl["b1_words"][wl["b1_index"] % len(wl["b1_words"])]
+              wl["b1_index"] += 1
+              words.append({
+                  "no": w["no"],
+                  "lt": w["lt"],
+                  "examples": b1_examples(w["no"])
+              })
+
+          # 5 B2
+          for _ in range(5):
+              w = wl["b2_words"][wl["b2_index"] % len(wl["b2_words"])]
+              wl["b2_index"] += 1
+              words.append({
+                  "no": w["no"],
+                  "lt": w["lt"],
+                  "examples": b2_examples(w["no"])
+              })
+
+          # lagre
+          with open("words.json", "w", encoding="utf-8") as f:
+              json.dump(words, f, ensure_ascii=False, indent=2)
+
+          with open("wordlists.json", "w", encoding="utf-8") as f:
+              json.dump(wl, f, ensure_ascii=False, indent=2)
+          EOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add words.json wordlists.json
+          git commit -m "Automatisk: 5 B1 + 5 B2 ord" || echo "No changes"
+          git push
