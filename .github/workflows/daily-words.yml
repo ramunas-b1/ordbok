@@ -1,0 +1,53 @@
+name: Daily Dictionary Update
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update words.json
+        run: |
+          python3 << 'EOF'
+          import json, datetime
+
+          try:
+              with open("words.json", "r", encoding="utf-8") as f:
+                  words = json.load(f)
+          except:
+              words = []
+
+          today = datetime.date.today().isoformat()
+
+          new_words = [
+            {
+              "no": f"daglig_ord_{today}",
+              "lt": "automatiškai",
+              "examples": [
+                "Dette ordet ble lagt til automatisk.",
+                "Systemet fungerer uten manuelt arbeid.",
+                "Dette er et eksempel på automatisk oppdatering.",
+                "Automatisering sparer tid i hverdagen.",
+                "Dette ordet er lagt til av GitHub."
+              ]
+            }
+          ]
+
+          words.extend(new_words)
+
+          with open("words.json", "w", encoding="utf-8") as f:
+              json.dump(words, f, ensure_ascii=False, indent=2)
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add words.json
+          git commit -m "Automatisk: nytt daglig ord"
+          git push
