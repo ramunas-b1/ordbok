@@ -1,67 +1,57 @@
-name: Daily Dictionary Update
+import json
 
-on:
-  schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:
+# last ordbok
+try:
+    with open("words.json", "r", encoding="utf-8") as f:
+        words = json.load(f)
+except:
+    words = []
 
-concurrency:
-  group: daily-words
-  cancel-in-progress: true
+# last ordlister
+with open("wordlists.json", "r", encoding="utf-8") as f:
+    wl = json.load(f)
 
-permissions:
-  contents: write
+def b1_examples(word):
+    return [
+        f"Jeg bruker ordet {word} i hverdagen.",
+        f"{word.capitalize()} er viktig når jeg snakker norsk.",
+        f"Jeg prøver å forstå hva {word} betyr.",
+        f"Dette er et vanlig ord på jobb.",
+        f"Jeg hører ofte ordet {word}."
+    ]
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+def b2_examples(word):
+    return [
+        f"God forståelse av {word} er viktig i profesjonell kommunikasjon.",
+        f"Ordet {word} brukes ofte i formelle og skriftlige sammenhenger.",
+        f"{word.capitalize()} kan forklare hvordan mennesker samhandler.",
+        f"På arbeidsplassen forventes det at man behersker begrepet {word}.",
+        f"Bruken av {word} viser et høyere språklig nivå."
+    ]
 
-      - name: Update words.json
-        run: |
-          python3 << 'EOF'
-          import json, datetime
+# 5 B1
+for _ in range(5):
+    w = wl["b1_words"][wl["b1_index"] % len(wl["b1_words"])]
+    wl["b1_index"] += 1
+    words.append({
+        "no": w["no"],
+        "lt": w["lt"],
+        "examples": b1_examples(w["no"])
+    })
 
-          # last ordbok
-          try:
-              with open("words.json", "r", encoding="utf-8") as f:
-                  words = json.load(f)
-          except:
-              words = []
+# 5 B2
+for _ in range(5):
+    w = wl["b2_words"][wl["b2_index"] % len(wl["b2_words"])]
+    wl["b2_index"] += 1
+    words.append({
+        "no": w["no"],
+        "lt": w["lt"],
+        "examples": b2_examples(w["no"])
+    })
 
-          today = datetime.date.today().isoformat()
+# lagre
+with open("words.json", "w", encoding="utf-8") as f:
+    json.dump(words, f, ensure_ascii=False, indent=2)
 
-          # første versjon: legg til 1 nytt ord (enkelt test)
-          words.append({
-            "no": f"daglig_ord_{today}",
-            "lt": "automatiškai",
-            "examples": [
-              "Dette ordet ble lagt til automatisk.",
-              "Systemet fungerer uten manuelt arbeid.",
-              "Dette er et eksempel på automatisk oppdatering.",
-              "Automatisering sparer tid i hverdagen.",
-              "Dette ordet er lagt til av GitHub."
-            ]
-          })
-
-          with open("words.json", "w", encoding="utf-8") as f:
-              json.dump(words, f, ensure_ascii=False, indent=2)
-          EOF
-
-      - name: Commit and push (main) with retry
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-
-          git add words.json
-          git commit -m "Automatisk: nytt daglig ord" || echo "No changes to commit"
-
-          # retry 5 ganger hvis GitHub rakk først
-          for i in 1 2 3 4 5; do
-            git pull --rebase origin main || true
-            git push origin HEAD:main && break
-            sleep 2
-          done
+with open("wordlists.json", "w", encoding="utf-8") as f:
+    json.dump(wl, f, ensure_ascii=False, indent=2)
