@@ -42,5 +42,115 @@
       "Automatisering sparer tid i hverdagen.",
       "Dette ordet er lagt til av GitHub."
     ]
+  },
+  {
+    "no": "hverdag",
+    "lt": "kasdienybė",
+    "examples": [
+      "Jeg bruker ordet hverdag i hverdagen.",
+      "Hverdag er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva hverdag betyr.",
+      "Jeg hører ofte ordet hverdag.",
+      "Hverdag er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "arbeid",
+    "lt": "darbas",
+    "examples": [
+      "Jeg bruker ordet arbeid i hverdagen.",
+      "Arbeid er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva arbeid betyr.",
+      "Jeg hører ofte ordet arbeid.",
+      "Arbeid er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "jobb",
+    "lt": "darbas",
+    "examples": [
+      "Jeg bruker ordet jobb i hverdagen.",
+      "Jobb er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva jobb betyr.",
+      "Jeg hører ofte ordet jobb.",
+      "Jobb er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "pause",
+    "lt": "pertrauka",
+    "examples": [
+      "Jeg bruker ordet pause i hverdagen.",
+      "Pause er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva pause betyr.",
+      "Jeg hører ofte ordet pause.",
+      "Pause er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "rutine",
+    "lt": "rutina",
+    "examples": [
+      "Jeg bruker ordet rutine i hverdagen.",
+      "Rutine er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva rutine betyr.",
+      "Jeg hører ofte ordet rutine.",
+      "Rutine er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "forventning",
+    "lt": "lūkestis",
+    "examples": [
+      "God forståelse av forventning er viktig i profesjonell kommunikasjon.",
+      "Ordet forventning brukes ofte i formelle sammenhenger.",
+      "Forventning spiller en viktig rolle i arbeidslivet.",
+      "Bruken av forventning viser et høyere språknivå.",
+      "Forventning er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "tilpasse",
+    "lt": "prisitaikyti",
+    "examples": [
+      "God forståelse av tilpasse er viktig i profesjonell kommunikasjon.",
+      "Ordet tilpasse brukes ofte i formelle sammenhenger.",
+      "Tilpasse spiller en viktig rolle i arbeidslivet.",
+      "Bruken av tilpasse viser et høyere språknivå.",
+      "Tilpasse er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "utfordring",
+    "lt": "iššūkis",
+    "examples": [
+      "God forståelse av utfordring er viktig i profesjonell kommunikasjon.",
+      "Ordet utfordring brukes ofte i formelle sammenhenger.",
+      "Utfordring spiller en viktig rolle i arbeidslivet.",
+      "Bruken av utfordring viser et høyere språknivå.",
+      "Utfordring er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "selvstendig",
+    "lt": "savarankiškas",
+    "examples": [
+      "God forståelse av selvstendig er viktig i profesjonell kommunikasjon.",
+      "Ordet selvstendig brukes ofte i formelle sammenhenger.",
+      "Selvstendig spiller en viktig rolle i arbeidslivet.",
+      "Bruken av selvstendig viser et høyere språknivå.",
+      "Selvstendig er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "kommunikasjon",
+    "lt": "komunikacija",
+    "examples": [
+      "God forståelse av kommunikasjon er viktig i profesjonell kommunikasjon.",
+      "Ordet kommunikasjon brukes ofte i formelle sammenhenger.",
+      "Kommunikasjon spiller en viktig rolle i arbeidslivet.",
+      "Bruken av kommunikasjon viser et høyere språknivå.",
+      "Kommunikasjon er relevant i samfunnsrelaterte temaer."
+    ]
   }
 ]

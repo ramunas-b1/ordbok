@@ -1,30 +1,88 @@
 {
-  "b1_index": 0,
-  "b2_index": 0,
-
+  "b1_index": 5,
+  "b2_index": 5,
   "b1_words": [
-    { "no": "hverdag", "lt": "kasdienybė" },
-    { "no": "arbeid", "lt": "darbas" },
-    { "no": "jobb", "lt": "darbas" },
-    { "no": "pause", "lt": "pertrauka" },
-    { "no": "rutine", "lt": "rutina" },
-    { "no": "møte", "lt": "susitikimas" },
-    { "no": "ansvar", "lt": "atsakomybė" },
-    { "no": "beskjed", "lt": "žinutė" },
-    { "no": "samarbeid", "lt": "bendradarbiavimas" },
-    { "no": "mulighet", "lt": "galimybė" }
+    {
+      "no": "hverdag",
+      "lt": "kasdienybė"
+    },
+    {
+      "no": "arbeid",
+      "lt": "darbas"
+    },
+    {
+      "no": "jobb",
+      "lt": "darbas"
+    },
+    {
+      "no": "pause",
+      "lt": "pertrauka"
+    },
+    {
+      "no": "rutine",
+      "lt": "rutina"
+    },
+    {
+      "no": "møte",
+      "lt": "susitikimas"
+    },
+    {
+      "no": "ansvar",
+      "lt": "atsakomybė"
+    },
+    {
+      "no": "beskjed",
+      "lt": "žinutė"
+    },
+    {
+      "no": "samarbeid",
+      "lt": "bendradarbiavimas"
+    },
+    {
+      "no": "mulighet",
+      "lt": "galimybė"
+    }
   ],
-
   "b2_words": [
-    { "no": "forventning", "lt": "lūkestis" },
-    { "no": "tilpasse", "lt": "prisitaikyti" },
-    { "no": "utfordring", "lt": "iššūkis" },
-    { "no": "selvstendig", "lt": "savarankiškas" },
-    { "no": "kommunikasjon", "lt": "komunikacija" },
-    { "no": "respekt", "lt": "pagarba" },
-    { "no": "tillit", "lt": "pasitikėjimas" },
-    { "no": "løsning", "lt": "sprendimas" },
-    { "no": "prioritere", "lt": "teikti pirmenybę" },
-    { "no": "struktur", "lt": "struktūra" }
+    {
+      "no": "forventning",
+      "lt": "lūkestis"
+    },
+    {
+      "no": "tilpasse",
+      "lt": "prisitaikyti"
+    },
+    {
+      "no": "utfordring",
+      "lt": "iššūkis"
+    },
+    {
+      "no": "selvstendig",
+      "lt": "savarankiškas"
+    },
+    {
+      "no": "kommunikasjon",
+      "lt": "komunikacija"
+    },
+    {
+      "no": "respekt",
+      "lt": "pagarba"
+    },
+    {
+      "no": "tillit",
+      "lt": "pasitikėjimas"
+    },
+    {
+      "no": "løsning",
+      "lt": "sprendimas"
+    },
+    {
+      "no": "prioritere",
+      "lt": "teikti pirmenybę"
+    },
+    {
+      "no": "struktur",
+      "lt": "struktūra"
+    }
   ]
 }
