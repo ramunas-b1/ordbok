@@ -89,7 +89,9 @@ jobs:
     git config user.name "github-actions"
     git config user.email "actions@github.com"
 
+    git checkout -B bot-data
+
     git add words.json wordlists.json
     git commit -m "Automatisk: daglige ord" || echo "No changes to commit"
 
-    git push --force-with-lease origin main
+    git push origin bot-data --force
