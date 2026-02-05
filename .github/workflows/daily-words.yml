@@ -86,13 +86,13 @@ jobs:
 
       - name: Commit and push changes
         run: |
-        git config user.name "github-actions"
-    git config user.email "actions@github.com"
+         git config user.name "github-actions"
+         git config user.email "actions@github.com"
 
-    git checkout -B bot-data
+         git checkout -B bot-data
 
-    git add words.json wordlists.json
-    git commit -m "Automatisk: daglige ord" || echo "No changes to commit"
+         git add words.json wordlists.json
+         git commit -m "Automatisk: daglige ord" || echo "No changes to commit"
 
-    git push origin bot-data --force
+         git push origin bot-data --force
     
