@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norsk–Litauisk Ordbok</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f7f7f7;padding:16px}
+h2{text-align:center}
+input{width:100%;padding:10px;margin:12px 0;border-radius:8px;border:1px solid #ccc}
+details{background:#fff;border-radius:10px;padding:10px;margin-bottom:8px}
+summary{font-weight:bold;font-size:18px;cursor:pointer}
+.lt{color:#2563eb;font-size:14px}
+</style>
+</head>
+<body>
+
+<h2>📘 Norsk–Litauisk Ordbok</h2>
+<input id="search" placeholder="Søk...">
+
+<div id="list"></div>
+
+<script>
+fetch('words.json')
+.then(r=>r.json())
+.then(data=>{
+  window.DATA=data;
+  render(data);
+});
+
+function render(data){
+  const list=document.getElementById('list');
+  list.innerHTML='';
+  data.forEach(w=>{
+    const d=document.createElement('details');
+    d.innerHTML=`<summary>${w.no} <span class="lt">(${w.lt})</span></summary>
+      <ul>${w.examples.map(e=>`<li>${e}</li>`).join('')}</ul>`;
+    list.appendChild(d);
+  });
+}
+
+document.getElementById('search').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase();
+  render(window.DATA.filter(w=>
+    w.no.toLowerCase().includes(q) ||
+    w.lt.toLowerCase().includes(q) ||
+    w.examples.join(' ').toLowerCase().includes(q)
+  ));
+});
+</script>
+
+</body>
+</html>

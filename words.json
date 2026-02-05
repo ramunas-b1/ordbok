@@ -1,0 +1,35 @@
+[
+  {
+    "no": "forklare",
+    "lt": "paaiškinti",
+    "examples": [
+      "Kan du forklare dette ordet?",
+      "Læreren forklarer oppgaven.",
+      "Jeg prøver å forklare problemet.",
+      "Læreren forklarte reglene på en tydelig måte.",
+      "Det var vanskelig å forklare situasjonen presist."
+    ]
+  },
+  {
+    "no": "forståelse",
+    "lt": "supratimas",
+    "examples": [
+      "Jeg har god forståelse av teksten.",
+      "Forståelse er viktig når man lærer språk.",
+      "Jeg mangler litt forståelse.",
+      "God forståelse gjør kommunikasjonen lettere.",
+      "Øvelse gir bedre forståelse av språket."
+    ]
+  },
+  {
+    "no": "uttrykke",
+    "lt": "išreikšti",
+    "examples": [
+      "Jeg kan uttrykke meningene mine.",
+      "Det er viktig å uttrykke seg klart.",
+      "Hun uttrykker følelsene sine.",
+      "Han klarer å uttrykke seg presist i møter.",
+      "Språket hjelper meg å uttrykke komplekse tanker."
+    ]
+  }
+]
