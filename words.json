@@ -812,5 +812,115 @@
       "Bruken av kommunikasjon viser et høyere språknivå.",
       "Kommunikasjon er relevant i samfunnsrelaterte temaer."
     ]
+  },
+  {
+    "no": "møte",
+    "lt": "susitikimas",
+    "examples": [
+      "Jeg bruker ordet møte i hverdagen.",
+      "Møte er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva møte betyr.",
+      "Jeg hører ofte ordet møte.",
+      "Møte er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "ansvar",
+    "lt": "atsakomybė",
+    "examples": [
+      "Jeg bruker ordet ansvar i hverdagen.",
+      "Ansvar er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva ansvar betyr.",
+      "Jeg hører ofte ordet ansvar.",
+      "Ansvar er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "beskjed",
+    "lt": "žinutė",
+    "examples": [
+      "Jeg bruker ordet beskjed i hverdagen.",
+      "Beskjed er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva beskjed betyr.",
+      "Jeg hører ofte ordet beskjed.",
+      "Beskjed er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "samarbeid",
+    "lt": "bendradarbiavimas",
+    "examples": [
+      "Jeg bruker ordet samarbeid i hverdagen.",
+      "Samarbeid er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva samarbeid betyr.",
+      "Jeg hører ofte ordet samarbeid.",
+      "Samarbeid er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "mulighet",
+    "lt": "galimybė",
+    "examples": [
+      "Jeg bruker ordet mulighet i hverdagen.",
+      "Mulighet er et vanlig ord på jobb.",
+      "Jeg prøver å lære hva mulighet betyr.",
+      "Jeg hører ofte ordet mulighet.",
+      "Mulighet er nyttig i dagligtale."
+    ]
+  },
+  {
+    "no": "respekt",
+    "lt": "pagarba",
+    "examples": [
+      "God forståelse av respekt er viktig i profesjonell kommunikasjon.",
+      "Ordet respekt brukes ofte i formelle sammenhenger.",
+      "Respekt spiller en viktig rolle i arbeidslivet.",
+      "Bruken av respekt viser et høyere språknivå.",
+      "Respekt er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "tillit",
+    "lt": "pasitikėjimas",
+    "examples": [
+      "God forståelse av tillit er viktig i profesjonell kommunikasjon.",
+      "Ordet tillit brukes ofte i formelle sammenhenger.",
+      "Tillit spiller en viktig rolle i arbeidslivet.",
+      "Bruken av tillit viser et høyere språknivå.",
+      "Tillit er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "løsning",
+    "lt": "sprendimas",
+    "examples": [
+      "God forståelse av løsning er viktig i profesjonell kommunikasjon.",
+      "Ordet løsning brukes ofte i formelle sammenhenger.",
+      "Løsning spiller en viktig rolle i arbeidslivet.",
+      "Bruken av løsning viser et høyere språknivå.",
+      "Løsning er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "prioritere",
+    "lt": "teikti pirmenybę",
+    "examples": [
+      "God forståelse av prioritere er viktig i profesjonell kommunikasjon.",
+      "Ordet prioritere brukes ofte i formelle sammenhenger.",
+      "Prioritere spiller en viktig rolle i arbeidslivet.",
+      "Bruken av prioritere viser et høyere språknivå.",
+      "Prioritere er relevant i samfunnsrelaterte temaer."
+    ]
+  },
+  {
+    "no": "struktur",
+    "lt": "struktūra",
+    "examples": [
+      "God forståelse av struktur er viktig i profesjonell kommunikasjon.",
+      "Ordet struktur brukes ofte i formelle sammenhenger.",
+      "Struktur spiller en viktig rolle i arbeidslivet.",
+      "Bruken av struktur viser et høyere språknivå.",
+      "Struktur er relevant i samfunnsrelaterte temaer."
+    ]
   }
 ]
